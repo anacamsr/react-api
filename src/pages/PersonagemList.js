@@ -35,8 +35,14 @@ const PersonagemList = () => {
         value={searchTerm}
         onChange={handleChange}
       />
-      <div>
-        <Container>
+      <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+        <Container style={{
+          backgroundColor: "rgba(255, 255, 255, 0.5)",
+          borderRadius: "15px",
+          paddingTop: "20px",
+          paddingBottom: "20px",
+          marginBottom: "20px",
+        }}>
           <div
             style={{
               marginTop: "10px",
