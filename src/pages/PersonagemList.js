@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PersonagemCard from "../components/PersonagemCard";
-import { Col, Container, Row } from "reactstrap";
+import { Button, Col, Container, Row } from "reactstrap";
 
 const PersonagemList = () => {
   const [characters, setCharacters] = useState([]);
@@ -11,9 +11,11 @@ const PersonagemList = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await axios.get(
-          `https://rickandmortyapi.com/api/character/?name=${searchTerm}`
-        );
+        let url = "https://rickandmortyapi.com/api/character";
+        if (searchTerm) {
+          url += `/?name=${searchTerm}`;
+        }
+        const response = await axios.get(url);
         setCharacters(response.data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,20 +31,34 @@ const PersonagemList = () => {
 
   return (
     <div>
-      <input
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div class="input-group mb-3" style={{ width: "40%" }}>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pesquinar nome..."
+            aria-describedby="button-addon2"
+            value={searchTerm}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      {/* <input
         type="text"
         placeholder="Search characters"
         value={searchTerm}
         onChange={handleChange}
-      />
+      /> */}
       <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-        <Container style={{
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          borderRadius: "15px",
-          paddingTop: "20px",
-          paddingBottom: "20px",
-          marginBottom: "20px",
-        }}>
+        <Container
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            borderRadius: "15px",
+            paddingTop: "20px",
+            paddingBottom: "20px",
+            marginBottom: "20px",
+          }}
+        >
           <div
             style={{
               marginTop: "10px",
