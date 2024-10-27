@@ -1,7 +1,4 @@
 ![Screenshot do Programa](ex.gif)
-![Screenshot do Programa](img1.png)
-![Screenshot do Programa](img2.png)
-![Screenshot do Programa](img3.png)
 
 # Getting Started with Create React App
 
